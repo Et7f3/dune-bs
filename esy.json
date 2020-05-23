@@ -1,0 +1,8 @@
+{
+  "name": "dune-bs",
+  "version": "0.0.1",
+  "esy": {
+      "buildsInSource": "_build"
+  },
+  "dependencies": { "ocaml": "^4.10.0", "@opam/dune": "2.5.0" }
+}
