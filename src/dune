@@ -6,3 +6,18 @@
  (name ocaml)
  (modules Ocaml)
  (libraries lib))
+
+(executable
+ (name ocamlc)
+ (modules Ocamlc)
+ (libraries lib))
+
+(executable
+ (name ocamlc_opt)
+ (modules Ocamlc_opt)
+ (libraries lib))
+
+(install
+ (section bin)
+ (package dune-bs)
+ (files (ocaml.exe as ocaml) (ocamlc_opt.exe as ocamlc.opt) (ocamlc.exe as ocamlc)))

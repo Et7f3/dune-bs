@@ -2,6 +2,10 @@ open Filename
 
 let root = Sys.executable_name |> dirname |> dirname |> dirname |> dirname
 
+let exec_name = basename Sys.executable_name
+
+let conacat x y = concat x (exec_name ^ "_" ^ y)
+
 let root_args = concat root "args"
 let root_stdout = concat root "stdout"
 let root_stderr = concat root "stderr"
