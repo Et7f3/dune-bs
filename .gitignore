@@ -2,3 +2,5 @@ _esy
 _build
 node_modules
 .merlin
+*.install
+dune-bs-test.opam
