@@ -32,11 +32,10 @@ let my_end () =
 let resolve path =
     concat (Sys.getcwd ()) path
 
-let stdlib_path = resolve "./node_modules/bs-platform/lib/ocaml"
-
-let () = open_out ("Makefile.config" |> concat stdlib_path) |> close_out
+let stdlib_path = resolve "node_modules/bs-platform/lib/ocaml"
 
 let config () =
+  let () = open_out ("Makefile.config" |> concat stdlib_path) |> close_out in
   let () = print_endline "version: 4.06.0" in
   let () = print_endline ("standard_library_default: " ^ stdlib_path) in
   let () = print_endline ("standard_library: " ^ stdlib_path) in

@@ -1,23 +1,40 @@
 (library
  (name lib)
+ (public_name dune-bs.lib)
  (modules Lib))
 
 (executable
  (name ocaml)
+ (public_name ocaml)
+ (package dune-bs)
  (modules Ocaml)
  (libraries lib))
 
 (executable
  (name ocamlc)
+ (public_name ocamlc)
+ (package dune-bs)
  (modules Ocamlc)
  (libraries lib))
 
 (executable
  (name ocamlc_opt)
+ (public_name ocamlc.opt)
+ (package dune-bs)
  (modules Ocamlc_opt)
  (libraries lib))
+
+(rule
+ (target ocamldep)
+ (action (bash "cp $(which ocamldep) ocamldep"))
+ (package dune-bs))
+
+(install
+ (section lib)
+ (package dune-bs)
+ (files lib.cma))
 
 (install
  (section bin)
  (package dune-bs)
- (files (ocaml.exe as ocaml) (ocamlc_opt.exe as ocamlc.opt) (ocamlc.exe as ocamlc)))
+ (files ocamldep))
