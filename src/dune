@@ -1,0 +1,8 @@
+(library
+ (name lib)
+ (modules Lib))
+
+(executable
+ (name ocaml)
+ (modules Ocaml)
+ (libraries lib))
