@@ -94,7 +94,7 @@ let correct_args args =
     let args =
         args
   |> Array.to_list
-  |> List.filter (function e -> e <> "-opaque" && e <> "-custom")
+  |> List.filter (function e -> e <> "-opaque" && e <> "-custom" && e <> "-impl")
   |> List.map (function
       "-g" -> "-bs-g"
     | e when Filename.extension e = ".cmo" -> Filename.remove_extension e ^ ".cmj"
@@ -109,7 +109,7 @@ let correct_args args =
     let output_file_name, args =
         let rec loop = function
             [] -> failwith "-o is absent"
-          | "-o" :: name :: l -> name, l
+          | "-o" :: name :: l -> name, "-o" :: name :: l
           | e :: l ->
             let output_file_name, args = loop l in
             output_file_name, e :: args
