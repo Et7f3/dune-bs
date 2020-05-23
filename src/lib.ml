@@ -91,10 +91,29 @@ let config () =
   ()
 
 let correct_args args =
-  args
+    let args =
+        args
   |> Array.to_list
   |> List.filter (function e -> e <> "-opaque" && e <> "-custom")
-  |> List.map (function e when Filename.extension e = ".cmo" -> Filename.remove_extension e ^ ".cmj" | e -> e)
-  |> Array.of_list
-  |> Array.map (function "-g" -> "-bs-g" | e -> e)
+  |> List.map (function
+      "-g" -> "-bs-g"
+    | e when Filename.extension e = ".cmo" -> Filename.remove_extension e ^ ".cmj"
+(*    | "-o" -> "-bs-package-output"
+    | "test/.a.eobjs/byte/dune__exe__A.cmo" ->
+            let () = Unix.mkdir "test" 0o777 in
+            let () = Unix.mkdir "test/.a.eobjs" 0o777 in
+            let () = Unix.mkdir "test/.a.eobjs/byte" 0o777 in
+            "commonjs:test/.a.eobjs/byte"*)
+    | e -> e)
+    in
+    let output_file_name, args =
+        let rec loop = function
+            [] -> failwith "-o is absent"
+          | "-o" :: name :: l -> name, l
+          | e :: l ->
+            let output_file_name, args = loop l in
+            output_file_name, e :: args
+        in loop args
+    in
+  output_file_name, args |> Array.of_list
 
