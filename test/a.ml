@@ -1,1 +1,1 @@
-let () = print_endline "Hello, Bucklescript !"
+let () = B.log "Hello, Bucklescript !"
