@@ -1,0 +1,12 @@
+{
+    "name": "dune-bs-test",
+    "esy": {
+        "build": "dune build --only-packages dune-bs-test"
+    },
+    "dependencies": {
+        "dune-bs": "*"
+    },
+    "resolutions": {
+        "dune-bs": "link:./"
+    }
+}

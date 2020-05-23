@@ -3,19 +3,10 @@
   "version": "0.0.1",
   "esy": {
       "build": "dune build -p dune-bs",
-      "exportedEnv": {
-          "P": {
-              "val": "#{self.install / 'bin' : $PATH}",
-              "scope": "global"
-          }
-      },
       "buildsInSource": "_build"
   },
   "scripts": {
-      "test": "esy x dune build --root=test",
-      "test2": "esy x which -a ocaml",
-      "test3": "sh -c \"echo #{$PATH} | tr ':' '\n'\"",
-      "test4": "sh -c \"PATH=#{self.install / 'bin' : $PATH} dune build --only-packages dune-bs-test\""
+      "test": "esy @dune-bs-test build"
   },
   "dependencies": { "ocaml": "^4.10.0", "@opam/dune": "2.5.0" }
 }
