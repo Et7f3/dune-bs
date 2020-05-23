@@ -29,3 +29,64 @@ let my_end () =
   let () = close_out my_stderr in
   ()(*close_in my_stdin*)
 
+let resolve path =
+    concat (Sys.getcwd ()) path
+
+let stdlib_path = resolve "./node_modules/bs-platform/lib/ocaml"
+
+let () = open_out ("Makefile.config" |> concat stdlib_path) |> close_out
+
+let config () =
+  let () = print_endline "version: 4.06.0" in
+  let () = print_endline ("standard_library_default: " ^ stdlib_path) in
+  let () = print_endline ("standard_library: " ^ stdlib_path) in
+  let () = print_endline "ccomp_type: echo 1" in
+  let () = print_endline "c_compiler: echo 2" in
+  let () = print_endline "ocamlc_cflags: -O2 -fno-strict-aliasing -fwrapv -fPIC" in
+  let () = print_endline "ocamlc_cppflags: -D_FILE_OFFSET_BITS=64 -D_REENTRANT" in
+  let () = print_endline "ocamlopt_cflags: -O2 -fno-strict-aliasing -fwrapv" in
+  let () = print_endline "ocamlopt_cppflags: -D_FILE_OFFSET_BITS=64 -D_REENTRANT" in
+  let () = print_endline "bytecomp_c_compiler: echo 3" in
+  let () = print_endline "native_c_compiler: echo 4" in
+  let () = print_endline "bytecomp_c_libraries: -lm -ldl  -lpthread " in
+  let () = print_endline "native_c_libraries: -lm -ldl " in
+  let () = print_endline "native_pack_linker: ld -r -o " in
+  let () = print_endline "ranlib: ranlib" in
+  let () = print_endline "architecture: js" in
+  let () = print_endline "model: default" in
+  let () = print_endline "int_size: 63" in
+  let () = print_endline "word_size: 64" in
+  let () = print_endline "system: linux" in
+  let () = print_endline "asm: as" in
+  let () = print_endline "asm_cfi_supported: false" in
+  let () = print_endline "with_frame_pointers: false" in
+  let () = print_endline "ext_exe: " in
+  let () = print_endline "ext_obj: .o" in
+  let () = print_endline "ext_asm: .s" in
+  let () = print_endline "ext_lib: .a" in
+  let () = print_endline "ext_dll: .so" in
+  let () = print_endline "os_type: Unix" in
+  let () = print_endline "default_executable_name: a.out" in
+  let () = print_endline "systhread_supported: true" in
+  let () = print_endline "host: x86_64-pc-linux-gnu" in
+  let () = print_endline "target: x86_64-pc-linux-gnu" in
+  let () = print_endline "flambda: false" in
+  let () = print_endline "spacetime: false" in
+  let () = print_endline "safe_string: true" in
+  let () = print_endline "default_safe_string: true" in
+  let () = print_endline "flat_float_array: true" in
+  let () = print_endline "function_sections: true" in
+  let () = print_endline "afl_instrument: false" in
+  let () = print_endline "windows_unicode: false" in
+  let () = print_endline "supports_shared_libraries: true" in
+  let () = print_endline "exec_magic_number: Caml1999X027" in
+  let () = print_endline "cmi_magic_number: Caml1999I027" in
+  let () = print_endline "cmo_magic_number: Caml1999O027" in
+  let () = print_endline "cma_magic_number: Caml1999A027" in
+  let () = print_endline "cmx_magic_number: Caml1999Y027" in
+  let () = print_endline "cmxa_magic_number: Caml1999Z027" in
+  let () = print_endline "ast_impl_magic_number: Caml1999M027" in
+  let () = print_endline "ast_intf_magic_number: Caml1999N027" in
+  let () = print_endline "cmxs_magic_number: Caml1999D027" in
+  let () = print_endline "cmt_magic_number: Caml1999T027" in
+  ()
