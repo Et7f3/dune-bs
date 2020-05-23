@@ -1,0 +1,106 @@
+{
+  "checksum": "f48cc12ed90841b24fa98357019bdb1b",
+  "root": "dune-bs@link-dev:./esy.json",
+  "node": {
+    "ocaml@4.10.0@d41d8cd9": {
+      "id": "ocaml@4.10.0@d41d8cd9",
+      "name": "ocaml",
+      "version": "4.10.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://registry.npmjs.org/ocaml/-/ocaml-4.10.0.tgz#sha1:3797ee252dca8dec38d3cdd42162923f56dba433"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    },
+    "dune-bs@link-dev:./esy.json": {
+      "id": "dune-bs@link-dev:./esy.json",
+      "name": "dune-bs",
+      "version": "link-dev:./esy.json",
+      "source": { "type": "link-dev", "path": ".", "manifest": "esy.json" },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/dune@opam:2.5.0@aef1678b"
+      ],
+      "devDependencies": []
+    },
+    "@opam/dune@opam:2.5.0@aef1678b": {
+      "id": "@opam/dune@opam:2.5.0@aef1678b",
+      "name": "@opam/dune",
+      "version": "opam:2.5.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/9c/9cc1661b9b173dd183867edcf8ee28a9ce79079a7d00316b719bdcba1d78d7da#sha256:9cc1661b9b173dd183867edcf8ee28a9ce79079a7d00316b719bdcba1d78d7da",
+          "archive:https://github.com/ocaml/dune/releases/download/2.5.0/dune-2.5.0.tbz#sha256:9cc1661b9b173dd183867edcf8ee28a9ce79079a7d00316b719bdcba1d78d7da"
+        ],
+        "opam": {
+          "name": "dune",
+          "version": "2.5.0",
+          "path": "esy.lock/opam/dune.2.5.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/base-unix@opam:base@87d0b2eb",
+        "@opam/base-threads@opam:base@36803084",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/base-unix@opam:base@87d0b2eb",
+        "@opam/base-threads@opam:base@36803084"
+      ]
+    },
+    "@opam/base-unix@opam:base@87d0b2eb": {
+      "id": "@opam/base-unix@opam:base@87d0b2eb",
+      "name": "@opam/base-unix",
+      "version": "opam:base",
+      "source": {
+        "type": "install",
+        "source": [ "no-source:" ],
+        "opam": {
+          "name": "base-unix",
+          "version": "base",
+          "path": "esy.lock/opam/base-unix.base"
+        }
+      },
+      "overrides": [],
+      "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
+      "devDependencies": []
+    },
+    "@opam/base-threads@opam:base@36803084": {
+      "id": "@opam/base-threads@opam:base@36803084",
+      "name": "@opam/base-threads",
+      "version": "opam:base",
+      "source": {
+        "type": "install",
+        "source": [ "no-source:" ],
+        "opam": {
+          "name": "base-threads",
+          "version": "base",
+          "path": "esy.lock/opam/base-threads.base"
+        }
+      },
+      "overrides": [],
+      "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
+      "devDependencies": []
+    },
+    "@esy-ocaml/substs@0.0.1@d41d8cd9": {
+      "id": "@esy-ocaml/substs@0.0.1@d41d8cd9",
+      "name": "@esy-ocaml/substs",
+      "version": "0.0.1",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://registry.npmjs.org/@esy-ocaml/substs/-/substs-0.0.1.tgz#sha1:59ebdbbaedcda123fc7ed8fb2b302b7d819e9a46"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    }
+  }
+}
