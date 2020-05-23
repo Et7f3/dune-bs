@@ -93,7 +93,8 @@ let config () =
 let correct_args args =
   args
   |> Array.to_list
-  |> List.filter (function e -> e != "-opaque")
+  |> List.filter (function e -> e <> "-opaque" && e <> "-custom")
+  |> List.map (function e when Filename.extension e = ".cmo" -> Filename.remove_extension e ^ ".cmj" | e -> e)
   |> Array.of_list
   |> Array.map (function "-g" -> "-bs-g" | e -> e)
 

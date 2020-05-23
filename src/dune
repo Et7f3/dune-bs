@@ -8,21 +8,21 @@
  (public_name ocaml)
  (package dune-bs)
  (modules Ocaml)
- (libraries lib))
+ (libraries unix lib))
 
 (executable
  (name ocamlc)
  (public_name ocamlc)
  (package dune-bs)
  (modules Ocamlc)
- (libraries lib))
+ (libraries unix lib))
 
 (executable
  (name ocamlc_opt)
  (public_name ocamlc.opt)
  (package dune-bs)
  (modules Ocamlc_opt)
- (libraries lib))
+ (libraries unix lib))
 
 (rule
  (target ocamldep)
