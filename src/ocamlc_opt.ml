@@ -12,6 +12,9 @@ let () =
       let up path = concat path ".." in
       concat (Sys.getcwd () |> up |> up |> up |> up |> up |> up)"node_modules/bs-platform/linux/bsc.exe" in
     let output_file_name, av = Lib.correct_args av in
+    if Filename.extension output_file_name = ".exe" || Filename.extension output_file_name = ".bc" then
+        open_out output_file_name |> close_out
+    else
     let () = av.(0) <- bsc in
     let (bs_stdout, _bs_stdin, bs_stderr) = Unix.open_process_args_full bsc av [||] in
     let out = open_out (output_file_name ^ ".js") in
