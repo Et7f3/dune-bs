@@ -4,11 +4,11 @@ let root = Sys.executable_name |> dirname |> dirname |> dirname |> dirname
 
 let exec_name = basename Sys.executable_name
 
-let conacat x y = concat x (exec_name ^ "_" ^ y)
+let concat' x y = concat x (exec_name ^ "_" ^ y)
 
-let root_args = concat root "args"
-let root_stdout = concat root "stdout"
-let root_stderr = concat root "stderr"
+let root_args = concat' root "args"
+let root_stdout = concat' root "stdout"
+let root_stderr = concat' root "stderr"
 (*let root_stdin = concat root "stdin"*)
 
 let my_args = open_out_bin root_args
@@ -89,3 +89,11 @@ let config () =
   let () = print_endline "cmxs_magic_number: Caml1999D027" in
   let () = print_endline "cmt_magic_number: Caml1999T027" in
   ()
+
+let correct_args args =
+  args
+  |> Array.to_list
+  |> List.filter (function e -> e != "-opaque")
+  |> Array.of_list
+  |> Array.map (function "-g" -> "-bs-g" | e -> e)
+
