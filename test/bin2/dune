@@ -1,0 +1,6 @@
+(executable
+ (name d)
+ (public_name d)
+ (package dune-bs-test)
+ (libraries c)
+ (modes byte))

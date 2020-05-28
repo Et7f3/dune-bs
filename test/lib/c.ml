@@ -1,0 +1,2 @@
+let add = ( + )
+let mul = ( * )

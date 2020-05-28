@@ -1,0 +1,4 @@
+(library
+ (name c)
+ (public_name dune-bs-test.c)
+ (modes byte))
