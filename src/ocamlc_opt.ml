@@ -17,6 +17,7 @@ let () =
     else
     let () = av.(0) <- bsc in
     let (bs_stdout, _bs_stdin, bs_stderr) = Unix.open_process_args_full bsc av [||] in
+    let output_file_name = Filename.remove_extension output_file_name in
     let output_file_name = output_file_name ^ ".js" in
     let out = open_out output_file_name in
     let () = print_endline ("bsc: " ^ bsc) in
