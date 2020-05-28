@@ -7,3 +7,5 @@
 
 (package
  (name dune-bs-test))
+
+(wrapped_executables false)
