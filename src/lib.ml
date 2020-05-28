@@ -19,6 +19,9 @@ let my_stderr = open_out_bin root_stderr
 let my_print_endline s =
   output_string my_stdout s; output_char my_stdout '\n'; flush my_stdout
 
+let my_prerr_endline s =
+  output_string my_stderr s; output_char my_stderr '\n'; flush my_stderr
+
 let () =
   let () = Array.iter my_print_endline Sys.argv in
   let () = flush my_args in
