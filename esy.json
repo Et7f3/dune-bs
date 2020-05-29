@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "esy": {
       "build": "dune build -p dune-bs",
-      "buildsInSource": "_build"
+      "buildsInSource": "_build",
+      "exportedEnv": {
+        "REAL_OCAML_PATH": {
+          "val": "#{ocaml.install}",
+          "scope": "global"
+        }
+      }
   },
   "scripts": {
       "test": "esy @dune-bs-test build"

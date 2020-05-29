@@ -35,13 +35,15 @@ let my_end () =
 let resolve path =
     concat (Sys.getcwd ()) path
 
-let stdlib_path = resolve "node_modules/bs-platform/lib/ocaml"
+let stdlib_path_default = resolve "node_modules/bs-platform/lib/ocaml"
+
+let standard_library_path = Sys.getenv "REAL_OCAML_PATH"
 
 let config () =
-  let () = open_out ("Makefile.config" |> concat stdlib_path) |> close_out in
+  let () = open_out ("Makefile.config" |> concat stdlib_path_default) |> close_out in
   let () = print_endline "version: 4.06.0" in
-  let () = print_endline ("standard_library_default: " ^ stdlib_path) in
-  let () = print_endline ("standard_library: " ^ stdlib_path) in
+  let () = print_endline ("standard_library_default: " ^ stdlib_path_default) in
+  let () = print_endline ("standard_library: " ^ ("ocaml" |> concat "lib" |> concat (Sys.getenv "REAL_OCAML_PATH"))) in
   let () = print_endline "ccomp_type: echo 1" in
   let () = print_endline "c_compiler: echo 2" in
   let () = print_endline "ocamlc_cflags: -O2 -fno-strict-aliasing -fwrapv -fPIC" in
