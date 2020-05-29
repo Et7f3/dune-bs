@@ -1,0 +1,6 @@
+(executable
+ (name f)
+ (public_name f)
+ (package dune-bs-test)
+ (preprocess (pps dummy-ppx.lib))
+)
