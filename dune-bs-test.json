@@ -1,13 +1,10 @@
 {
-    "name": "dune-bs-test",
-    "esy": {
-        "build": "dune build --only-packages dune-bs-test"
-    },
-    "dependencies": {
-        "dummy-ppx": "Et7f3/dummy-ppx#e89626708acb1a7a1f47d4166ab1dd9c46f9e657",
-        "dune-bs": "*"
-    },
-    "resolutions": {
-        "dune-bs": "link:./"
-    }
+  "name": "dune-bs-test",
+  "esy": { "build": "dune build --only-packages dune-bs-test --verbose -j 1" },
+  "dependencies": {
+    "@opam/reason": "3.6.0",
+    "dummy-ppx": "Et7f3/dummy-ppx#e89626708acb1a7a1f47d4166ab1dd9c46f9e657",
+    "dune-bs": "*"
+  },
+  "resolutions": { "dune-bs": "link:./" }
 }

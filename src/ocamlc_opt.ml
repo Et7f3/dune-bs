@@ -45,13 +45,18 @@ let () =
     else
     let av =
         Array.mapi (fun i e ->
-        if Filename.extension (Filename.remove_extension e) = ".pp" then
+            (* .pp is if preprocessed: pxx take source code and convert to a binary processed ast because we don't have a intermediate step to create a mlast/reast like bsb the ppx driver guess the latest ocaml. *)
+            (* .re is if refmt --print binary: it output 4.08 and Bs read 4.06... *)
+        if Filename.extension (Filename.remove_extension e) = ".pp" || Filename.extension (Filename.remove_extension e) = ".re" then
             let dest_name = Filename.((remove_extension e |> remove_extension) ^ ".ml") in
             let refmt = Filename.concat (bsc |> Filename.dirname) "refmt.exe" in
             let (refmt_stdout, refmt_stdin, refmt_stderr) = Unix.open_process_args_full refmt [| refmt; "--parse"; "binary"; "--print"; "ml"; e |] (Unix.environment ()) in
             let () = close_out refmt_stdin in
             let () = close_in refmt_stderr in
-            let () = Unix.chmod dest_name 0o777 in
+            let () =
+                if Sys.file_exists dest_name then (* for .re.ml *)
+                    Unix.chmod dest_name 0o777
+            in
             let dest = open_out dest_name in
             let rec loop () =
                 let line = input_line refmt_stdout ^ "\n" in
